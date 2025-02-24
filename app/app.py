@@ -1,21 +1,12 @@
-from flask import Flask, render_template
+# app.py
+from flask import Flask
+from routes import setup_routes
+from camera import release_camera
 
 app = Flask(__name__)
 
-# Ruta principal que muestra el menú
-@app.route("/")
-def menu():
-    return render_template("menu.html")
-
-# Ruta para la cámara
-@app.route("/camara")
-def camara():
-    return render_template("camara.html")
-
-# Ruta para la información
-@app.route("/info")
-def info():
-    return render_template("info.html")
+# Configura las rutas
+setup_routes(app)
 
 if __name__ == "__main__":
     app.run(debug=True)
