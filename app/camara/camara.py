@@ -1,14 +1,12 @@
-# camera.py
 import cv2
 import atexit
+import time
 
 # Cargar el clasificador en cascada para detección de caras
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Inicializar la cámara
 cap = cv2.VideoCapture(0)
-if not cap.isOpened():
-    raise RuntimeError("No se pudo abrir la cámara.")
 
 def release_camera():
     """Libera la cámara al cerrar la aplicación."""
@@ -17,8 +15,19 @@ def release_camera():
 
 atexit.register(release_camera)  # Asegura que se libere al cerrar
 
-def gen_frames():
+def change_camera(camera_id):
+    """Cambia la cámara por la seleccionada"""
+    global cap
+    cap.release()  # Liberar la cámara actual
+    time.sleep(1)  # Espera un segundo para asegurar que se libere la cámara correctamente
+    cap = cv2.VideoCapture(camera_id, cv2.CAP_DSHOW)  # Selecciona la cámara por id y usa DirectShow en Windows
+    if not cap.isOpened():
+        raise ValueError(f"No se pudo abrir la cámara {camera_id}")
+
+def gen_frames(camera_id=0):
     """Genera frames de la cámara en formato MJPEG con detección de caras."""
+    change_camera(camera_id)  # Cambiar la cámara antes de generar los frames
+
     while True:
         success, frame = cap.read()
         if not success:
@@ -43,3 +52,5 @@ def gen_frames():
 
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+    
+ 

@@ -10,7 +10,7 @@ flask_command = f'cmd.exe /k "{venv_path} && python app/app.py"'
 subprocess.Popen(flask_command, shell=True)
 
 # Da tiempo para que Flask se inicie antes de lanzar Electron
-time.sleep(5)  # Ajusta el tiempo según sea necesario
+time.sleep(15)  # Ajusta el tiempo según sea necesario
 
 # Abre una nueva consola para ejecutar Electron
 electron_command = 'cmd.exe /k "npx electron ."'

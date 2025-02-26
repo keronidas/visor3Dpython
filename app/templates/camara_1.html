@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Camera</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/app/static/styles/camera1.scss">
 </head>
 
 <body>
     <div class="flex justify-center items-center h-screen bg-black relative">
+        <h1 class="text-3xl">Camara 1</h1>
         <!-- Imagen de fondo -->
         <!-- Video de la cámara -->
-        <img src="{{ url_for('video_feed') }}" alt="Video en vivo" class="absolute w-full h-full ">
+        <img src="{{ url_for('video_feed', camera_id=0) }}" alt="Video en vivo" class="absolute w-full h-full ">
+
 
         <img src="{{ url_for('static', filename='img/scope.png') }}" alt="no carga" class="fixed z-2">
         <!-- <div class="fixed w-32 h-32 rounded-full border border-black"></div>
@@ -67,14 +70,14 @@
 
             <div class="flex flex-col gap-y-4">
                 <div class=" flex flex-col w-40 gap-y-2">
-                    <div class="bg-white/20 backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer">
-                        <p class="uppercase text-center">Cámara</p>
+                    <div class="bg-white backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer">
+                        <p class="uppercase text-center"><a href="/camara_1">Cámara</a></p>
                     </div>
                     <div class="bg-white/20 backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer">
-                        <p class="uppercase text-center">Térmica</p>
+                        <p class="uppercase text-center"><a href="/camara_2">Térmica</a></p>
                     </div>
-                    <div class="bg-white/20 backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer">
-                        <p class="uppercase text-center">Inflarrojo</p>
+                    <div class="bg-white backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer">
+                        <p class="uppercase text-center"><a href="/camara_1">Inflarrojo</a></p>
                     </div>
                 </div>
                 <div
@@ -98,65 +101,3 @@
 </body>
 
 </html>
-
-<style>
-    /* Estilo de la perilla (thumb) */
-    #large-range::-webkit-slider-thumb {
-        background-color: #000000;
-        /* Negro */
-        border: 2px solid #333;
-        /* Opcional: agregar un borde oscuro */
-        width: 20px;
-        /* Tamaño de la perilla */
-        height: 20px;
-        /* Tamaño de la perilla */
-        border-radius: 50%;
-        /* Hacer la perilla redonda */
-        cursor: pointer;
-        appearance: none;
-    }
-
-    #large-range::-moz-range-thumb {
-        background-color: #000000;
-        /* Negro */
-        border: 2px solid #333;
-        /* Opcional: agregar un borde */
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    #large-range::-ms-thumb {
-        background-color: #000000;
-        /* Negro */
-        border: 2px solid #333;
-        /* Opcional: agregar un borde */
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .circle-border {
-  position: relative;
-  padding: 2rem; /* Ajusta el padding según sea necesario */
-}
-
-.circle-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  border: 4px dashed black;
-  box-sizing: border-box;
-  pointer-events: none;
-  border-width: 4px;
-  /* Usamos box-shadow para crear más separación entre los guiones */
-  box-shadow: 0 0 0 10px transparent, 0 0 0 14px black;
-}
-
-</style>
