@@ -1,15 +1,23 @@
 {
-  "name": "flask-electron",
+  "name": "visor3dpython",
   "version": "1.0.0",
-  "main": "app.js",
+  "description": "",
+  "main": "app/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keronidas/visor3Dpython.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/keronidas/visor3Dpython/issues"
+  },
+  "homepage": "https://github.com/keronidas/visor3Dpython#readme",
   "devDependencies": {
-    "electron": "^34.2.0"
+    "electron": "^35.0.0"
   }
 }

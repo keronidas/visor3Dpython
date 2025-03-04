@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Camera</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="z-20 fixed top-0 left-0 p-4 py-40 gap-x-0 flex">
+        <div class="p-2 bg-white/50 w-16 rounded-l-xl" id="lightButton"><img src="static/img/sun.png" alt="dia"></div>
+        <div class="p-2 bg-slate-800/80 w-16 rounded-r-xl" id="darkButton"><img src="static/img/moon.png" alt="noche">
+        </div>
+    </div>
+    <div class="fixed top-0 right-0 z-10 flex flex-col p-4">
+
+        <div class=" w-screen p-2 flex justify-end items-center h-16 gap-x-4">
+
+            <div
+                class="flex flex-col text-center text-white font-bold bg-white/20 backdrop-blur-sm  px-4 justify-center h-16 rounded-full shadow hover:cursor-pointer modoNocturno">
+                <label for="" class="capitalize ">zoom</label>
+                <input type="range" class="bg-white rounded-lg  cursor-pointer accent-slate-600" id="inputZoom">
+            </div>
+            <div
+                class="flex text-white font-bold bg-white/20 backdrop-blur-sm px-4 py-4 rounded-full shadow hover:cursor-pointer justify-center gap-x-2 align-center items-center text-center h-16 min-w-40 modoNocturno">
+                <p>Settings</p>
+                <img src="static/img/setting.png" alt="" class="w-6 h-6">
+            </div>
+            <div
+                class="flex items-center justify-center text-white font-bold bg-white/20 backdrop-blur-sm px-4 py-4 rounded-full shadow hover:cursor-pointer h-16 modoNocturno">
+                <p>Otros comandos</p>
+            </div>
+
+        </div>
+        <div class="w-screen p-2 pt-8 flex justify-end items-center min-h-16 ">
+            <div class="bg-slate-800/50 max-w-80 rounded-xl">
+                <p class="text-white font-semibold px-2 pt-2 ">Notificacion de error</p>
+                <p class="text-white px-2 pb-2 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsum quam provident assumenda ex
+                    suscipit in, at maxime nulla facilis odit. Consequuntur quod veritatis voluptate quos, vero dolor
+                    sed ipsa perferendis.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="flex justify-center items-center h-screen bg-green-800 relative">
+
+           <img src="{{ url_for('video.video_feed') }}" width="640" class="fixed z-2 w-screen h-screen">
+        <div class="text-white flex flex-row justify-between items-end w-screen bottom-0 fixed z-2 p-4">
+            <div class="flex justify-center items-center gap-x-4 ">
+                <div
+                    class="flex flex-col p-4 px-8 bg-white/20 backdrop-blur-sm rounded-xl shadow text-white modoNocturno">
+                    <p class="uppercase font-bold">UAV</p>
+                    <div class="flex flex-row border-t border-white gap-x-16 ">
+                        <div class="flex flex-col">
+                            <p class="font-thin ">Posicion GPS</p>
+                            <p class="font-bold">LAT. 0.23</p>
+                            <p class="font-bold">LON. 4.5</p>
+                            <p class="font-bold">ALT. 4.44m</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="font-thin">Info 1</p>
+                            <p class="uppercase font-bold">Texto info1</p>
+                            <p class="font-thin">Info 2</p>
+                            <p class="uppercase font-bold">Texto info2</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="font-thin">Temperatura</p>
+                            <p class="uppercase font-bold">30c</p>
+                            <p class="font-thin">Altitud</p>
+                            <p class="uppercase font-bold">200m</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="flex flex-col p-4 px-8 bg-white/20 backdrop-blur-sm rounded-xl shadow modoNocturno">
+                    <p class="uppercase font-bold">Otra info a mostrar</p>
+                    <div class="flex flex-row border-t border-white gap-x-16">
+
+                        <div class="flex flex-col">
+                            <p class="font-thin">Info 3</p>
+                            <p class="uppercase font-bold">Texto info3</p>
+                            <p class="font-thin">Info 4</p>
+                            <p class="uppercase font-bold">Texto info4</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="font-thin">Info 5</p>
+                            <p class="uppercase font-bold">Texto info5</p>
+                            <p class="font-thin">Info 6</p>
+                            <p class="uppercase font-bold">Texto info6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-y-4 items-end justify-end">
+                <div class=" flex flex-col w-40 gap-y-2  ">
+                    <div class="bg-gray-800 text-white font-bold backdrop-blur-sm px-2 py-4 w-full  rounded-full shadow hover:cursor-pointer modoNocturno"
+                        id="activeButton">
+                        <p class="uppercase text-center"><a href="/camara_1">Cámara</a></p>
+                    </div>
+                    <div
+                        class="text-white font-bold bg-white/20 backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer modoNocturno">
+                        <p class="uppercase text-center"><a href="/camara_2">Térmica</a></p>
+                    </div>
+                    <div
+                        class="text-white font-bold bg-white/20 backdrop-blur-sm px-2 py-4 w-full rounded-full shadow hover:cursor-pointer modoNocturno">
+                        <p class="uppercase text-center"><a href="/camara_1">Inflarrojo</a></p>
+                    </div>
+                </div>
+                <div class="flex gap-x-8">
+
+                    <div
+                        class="w-40 h-40 bg-white/20 backdrop-blur-sm rounded-full flex flex-col items-end justify-end shadow  hover:cursor-pointer modoNocturno">
+                        <div class="h-full w-full flex justify-center items-center">
+                            <img src="static/img/down-arrow.png" class="w-8 h-8 hover:bg-red-300 rotate-180" alt="flecha1" id="topButton">
+                        </div>
+                        <div class="h-full w-full flex justify-between items-center flex-row">
+                            <img src="static/img/down-arrow.png" class="w-8 h-8 hover:bg-red-300 rotate-90" alt="flecha2" id="leftButton">
+                            <img src="static/img/radio-button.png" class="w-8 h-8 hover:bg-red-300" alt="boton-centro" id="centerButton">
+                            <img src="static/img/down-arrow.png" class="w-8 h-8 hover:bg-red-300 -rotate-90" alt="flecha3" id="rightButton">
+                        </div>
+                        <div class="h-full w-full flex justify-center items-center ">
+                            <img src="static/img/down-arrow.png" class="w-8 h-8 hover:bg-red-300" alt="flecha4" id="downButton">
+                        </div>
+                    </div>
+
+                    <div
+                        class="w-40 h-40 bg-white/20 backdrop-blur-sm rounded-full flex flex-col items-between justify-between shadow  hover:cursor-pointer modoNocturno p-2">
+                        <div class="h-full w-full flex justify-center items-center gap-x-8">
+                            <div class="w-8 h-8 bg-slate-800 rounded-full border-red-800 border" id="topLeftShooter">
+                            </div>
+                            <div class="w-8 h-8 bg-slate-800 rounded-full border-red-800 border" id="topRightShooter">
+                            </div>
+                        </div>
+                        <div class="h-full w-full flex justify-center items-center flex-row px-4">
+                            <div class="w-8 h-8 bg-slate-800 border-red-800 border" id="tiggerShooter"></div>
+                        </div>
+                        <div class="h-full w-full flex justify-center items-center gap-x-8 ">
+                            <div class="w-8 h-8 bg-slate-800 rounded-full border-red-800 border" id="botLeftShooter">
+                            </div>
+                            <div class="w-8 h-8 bg-slate-800 rounded-full border-red-800 border" id="botRightShooter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="static/js/changeVisivility.js"></script>
+    <script src="static/js/arrow.js"></script>
+    <script src="static/js/joystick.js"></script>
+</body>
+
+</html>
